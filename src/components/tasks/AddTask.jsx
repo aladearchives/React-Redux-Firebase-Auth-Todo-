@@ -14,12 +14,14 @@ class AddTask extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addTask(this.state);
+    document.getElementById("addTaskForm").requestFullscreen();
   };
 
   render() {
     return (
       <>
         <form
+          id="addTaskForm"
           className="container"
           autoComplete="off"
           style={{ marginTop: "38px" }}
