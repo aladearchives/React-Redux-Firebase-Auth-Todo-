@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 class AddTask extends Component {
   state = {
     task: "",
+    checked: "false"
   };
   handleChange = (e) => {
     this.setState({

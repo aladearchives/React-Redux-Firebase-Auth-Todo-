@@ -1,14 +1,24 @@
-import React from 'react';
+import React from "react";
 import AddTask from "../tasks/AddTask";
-import Tasks from "../tasks/Tasks"; 
+import Tasks from "../tasks/Tasks";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-const Dashboard = () => {
-    return (
-        <>
-            <h3>Dashboard</h3>
-            <AddTask/>
-            <Tasks />
-        </>
-    );
+const Dashboard = ({ uid }) => {
+  if (!uid) return <Redirect to="/signin" />;
+  return (
+    <>
+      <AddTask />
+      <Tasks />
+    </>
+  );
 };
-export default Dashboard;
+
+const mapStateToProps = (state) => {
+  const uid = state.firebase.auth.uid;
+  return {
+    uid: uid,
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);

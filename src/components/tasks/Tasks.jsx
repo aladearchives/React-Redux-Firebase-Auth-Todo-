@@ -39,6 +39,7 @@ export default compose(
   firestoreConnect((ownProps) => [
     {
       collection: "tasks",
+      where: ["authorId", "==", ownProps.uid],
       orderBy: ["date", "desc"],
     },
   ])
